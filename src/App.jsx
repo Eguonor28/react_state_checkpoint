@@ -19,6 +19,7 @@ function App() {
   };
   // component life cycle effect for time since mount
   useEffect(() => {
+    // An if statement so the effect only takes place when the profile is set to show
     let intervalId;
     if (show) {
       intervalId = setInterval(() => {
@@ -28,7 +29,7 @@ function App() {
     return () => {
       if (intervalId) clearInterval(intervalId);
     };
-  }, [show]);
+  }, [show]); // Dependency Show state
   return (
     <div className="bg-gray-200 p-2 mx-auto max-w-80 space-y-2 rounded">
       <h1 className="font-bold text-3xl">Personal Profile</h1>
@@ -38,6 +39,7 @@ function App() {
       <p>
         Time Since Mount: <strong>{timeSinceMount}</strong> seconds
       </p>
+      {/* when show is set the show the profile will return  */}
       {show && (
         <div className="">
           <img className="rounded h-96 w-full" src={person.imgSrc} alt="" />
